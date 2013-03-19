@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 
-import org.apache.avalon.framework.configuration.Configuration;
 import org.rapla.components.calendar.RaplaCalendar;
 import org.rapla.components.util.DateTools;
 import org.rapla.entities.RaplaObject;
@@ -17,6 +16,7 @@ import org.rapla.entities.domain.Appointment;
 import org.rapla.entities.domain.Repeating;
 import org.rapla.entities.domain.RepeatingType;
 import org.rapla.entities.domain.Reservation;
+import org.rapla.framework.Configuration;
 import org.rapla.framework.RaplaContext;
 import org.rapla.framework.RaplaException;
 import org.rapla.gui.MenuContext;
