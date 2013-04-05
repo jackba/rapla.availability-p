@@ -2,7 +2,6 @@ package org.rapla.plugin.availability;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -10,13 +9,11 @@ import java.util.HashSet;
 import org.rapla.components.calendar.RaplaCalendar;
 import org.rapla.components.util.DateTools;
 import org.rapla.entities.RaplaObject;
-import org.rapla.entities.RaplaType;
 import org.rapla.entities.domain.Allocatable;
 import org.rapla.entities.domain.Appointment;
 import org.rapla.entities.domain.Repeating;
 import org.rapla.entities.domain.RepeatingType;
 import org.rapla.entities.domain.Reservation;
-import org.rapla.framework.Configuration;
 import org.rapla.framework.RaplaContext;
 import org.rapla.framework.RaplaException;
 import org.rapla.gui.MenuContext;
@@ -31,7 +28,7 @@ public class AvailabilityMenuFactory extends RaplaGUIComponent implements Object
 
 	Allocatable allocatable = null;
 	
-    public AvailabilityMenuFactory( RaplaContext context, Configuration config) throws RaplaException
+    public AvailabilityMenuFactory( RaplaContext context) 
     {
         super( context );
         setChildBundleName( AvailabilityPlugin.RESOURCE_FILE);
@@ -50,14 +47,13 @@ public class AvailabilityMenuFactory extends RaplaGUIComponent implements Object
     	{
     		selectedObjects.add( focusedObject);
     	}
+
     	
-    	if ( focusedObject instanceof RaplaObject ) {
-    		RaplaType raplaType = ((RaplaObject)focusedObject).getRaplaType();
-    	    if ( raplaType.equals(Allocatable.TYPE) )
-    	    	allocatable = (Allocatable) focusedObject;
-    	    else
-        		return RaplaMenuItem.EMPTY_ARRAY;
-    	}
+    	if ( focusedObject != null && focusedObject.getRaplaType().equals(Allocatable.TYPE) )
+    	    allocatable = (Allocatable) focusedObject;
+    	else
+    	    return RaplaMenuItem.EMPTY_ARRAY;
+    	
         
         // create the menu entry
         final RaplaMenuItem AvialableItem = new RaplaMenuItem("notavailable");
@@ -72,13 +68,12 @@ public class AvailabilityMenuFactory extends RaplaGUIComponent implements Object
                 	Date dateNotAvailable = new Date(new Date().getTime());
                 	dateNotAvailable = showCalendarDialog();
                 	if(dateNotAvailable != null) {
-                		ArrayList<Reservation> toStore = new ArrayList<Reservation>();
-            			//Reservation[] events = getClientFacade().getReservations((User) null, null, dateNotAvailable, null);
+                		//Reservation[] events = getClientFacade().getReservations((User) null, null, dateNotAvailable, null);
             			Reservation[] events = getQuery().getReservationsForAllocatable(new Allocatable[] { allocatable },dateNotAvailable,DateTools.addDay(dateNotAvailable), null);
                 		for ( Reservation event: events) {
                 			Appointment[] appointments = event.getAppointmentsFor(allocatable);
                 			for(Appointment appointment : appointments) {
-                				Appointment editAppointment = (Appointment)getClientFacade().edit( appointment);
+                				Appointment editAppointment = getClientFacade().edit( appointment);
                 				Repeating repeating = editAppointment.getRepeating();
                                 if (repeating != null) {
                                 	repeating.addException(dateNotAvailable); 

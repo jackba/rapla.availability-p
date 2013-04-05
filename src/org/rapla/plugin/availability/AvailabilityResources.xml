@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!--*- coding: utf-8 -*-->
 <!DOCTYPE resources SYSTEM "../../components/xmlbundle/resources.dtd">
 <resources default="en"> 
-	<entry key="icon.notavailable">
-		<icon src="images/no_perm.gif"/>
-	</entry>
-    <entry key="notavailable">
+	<entry key="notavailable">
     	<text lang="en">Not available</text>
     	<text lang="de">nicht verfügbar</text>
     	<text lang="fr">Non disponible</text>

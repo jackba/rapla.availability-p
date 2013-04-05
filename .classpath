@@ -8,9 +8,7 @@
 			<accessrule kind="accessible" pattern="org/rapla/framework/*"/>
 			<accessrule kind="accessible" pattern="org/rapla/entities/**"/>
 			<accessrule kind="accessible" pattern="org/rapla/facade/*"/>
-			<accessrule kind="accessible" pattern="org/rapla/components/xmlbundle/**"/>
-			<accessrule kind="accessible" pattern="org/rapla/components/calendar/*"/>
-			<accessrule kind="accessible" pattern="org/rapla/components/layout/*"/>
+			<accessrule kind="accessible" pattern="org/rapla/components/**"/>
 			<accessrule kind="accessible" pattern="org/rapla/gui/*"/>
 			<accessrule kind="accessible" pattern="org/rapla/gui/toolkit/*"/>
 			<accessrule kind="accessible" pattern="org/rapla/plugin/mail/*"/>
