@@ -58,7 +58,7 @@ public class AvailabilityMenuFactory extends RaplaGUIComponent implements Object
         // create the menu entry
         final RaplaMenuItem AvialableItem = new RaplaMenuItem("notavailable");
         AvialableItem.setText(getI18n().getString("notavailable"));
-        AvialableItem.setIcon(getI18n().getIcon("icon.notavailable"));
+        AvialableItem.setIcon(getI18n().getIcon("icon.no_perm"));
         AvialableItem.addActionListener( new ActionListener()
         {
             public void actionPerformed( ActionEvent e )
