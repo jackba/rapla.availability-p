@@ -21,7 +21,7 @@ import org.rapla.plugin.RaplaClientExtensionPoints;
 
 public class AvailabilityPlugin implements PluginDescriptor<ClientServiceContainer>
 {
-	static boolean ENABLE_BY_DEFAULT = false;
+	public final static boolean ENABLE_BY_DEFAULT = false;
     public static final TypedComponentRole<I18nBundle> RESOURCE_FILE =new TypedComponentRole<I18nBundle>(AvailabilityPlugin.class.getPackage().getName() + ".AvailabilityResources");
     
     public String toString() {
