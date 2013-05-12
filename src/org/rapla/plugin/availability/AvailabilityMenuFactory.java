@@ -69,7 +69,7 @@ public class AvailabilityMenuFactory extends RaplaGUIComponent implements Object
                 	dateNotAvailable = showCalendarDialog();
                 	if(dateNotAvailable != null) {
                 		//Reservation[] events = getClientFacade().getReservations((User) null, null, dateNotAvailable, null);
-            			Reservation[] events = getQuery().getReservationsForAllocatable(new Allocatable[] { allocatable },dateNotAvailable,DateTools.addDay(dateNotAvailable), null);
+            			Reservation[] events = getQuery().getReservations(new Allocatable[] { allocatable },dateNotAvailable,DateTools.addDay(dateNotAvailable));
                 		for ( Reservation event: events) {
                 			Appointment[] appointments = event.getAppointmentsFor(allocatable);
                 			for(Appointment appointment : appointments) {
